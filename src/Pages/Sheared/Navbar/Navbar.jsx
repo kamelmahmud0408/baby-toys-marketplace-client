@@ -23,6 +23,7 @@ const Navbar = () => {
                 </div>
                 <div className=''>
                     <a className="btn btn-ghost normal-case text-xl ">daisyUI</a>
+                   
                 </div>
             </div>
             <div className="navbar-end hidden lg:flex">
