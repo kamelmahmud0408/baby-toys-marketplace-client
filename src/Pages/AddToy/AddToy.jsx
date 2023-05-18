@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2'
 
 const AddToy = () => {
     const {
@@ -11,6 +12,27 @@ const AddToy = () => {
 
     const onSubmit = (data) => {
         console.log(data)
+
+        fetch('http://localhost:5000/toys',{
+            method:'POST',
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body:JSON.stringify(data)
+            
+        })
+        .then(res =>res.json())
+        .then(result =>{
+            console.log(result)
+            if(result.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'product added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
+            }
+        })
     }
 
 
@@ -102,7 +124,7 @@ const AddToy = () => {
                     <h3 className='text-xl font-semibold mb-3'>Name</h3>
                         <select className="w-full p-2 border" {...register("category")}>
                             <option value="regularCar">Regular Car</option>
-                            <option value="fireTruck">Mini Fire Truck</option>
+                            <option value="ruck"> Regular Truck</option>
                             <option value="puliceCar">police car</option>
                             
                         </select>
