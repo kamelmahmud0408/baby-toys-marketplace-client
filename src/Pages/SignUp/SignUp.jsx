@@ -1,7 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const SignUp = () => {
+
+    const {createUser}=useContext(AuthContext)
+
+const handleSignUp=(event)=>{
+    event.preventDefault()
+
+    const form = event.target;
+    const name = form.displayName.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name,photo,email,password)
+
+    createUser(email,password)
+    .then(result =>{
+        const loggedUser=result.user
+        console.log(loggedUser)
+    })
+    .catch(error=>{
+        console.log(error)
+    })
+    
+}
+
+
     return (
         <div className="hero min-h-screen ">
             <div className="hero-content flex-col lg:flex-row">
@@ -10,7 +36,7 @@ const SignUp = () => {
                 </div>
                 <div className="card flex-shrink-0  shadow-xl bg-base-100 w-1/3  mx-auto p-5">
                     <h1 className="text-5xl my-3 text-center font-bold">Please Sign up</h1>
-                    <form  >
+                    <form onSubmit={handleSignUp} >
                         <div className='mt-4'>
                             <label htmlFor="name">Name</label> <br />
                             <input className='border w-full p-3 rounded  mt-4' type="text" name="displayName" id="" placeholder='Your Name' required />
