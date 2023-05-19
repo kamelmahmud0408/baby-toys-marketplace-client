@@ -8,6 +8,7 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivetRoute from "./PrivetRoute";
 import MyToys from "../Pages/MyToys/MyToys";
+import ToysDetails from "../Pages/ToysDetails/ToysDetails";
 
 const router=createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router=createBrowserRouter([
             {
                 path:'/mytoys',
                 element:<PrivetRoute><MyToys></MyToys></PrivetRoute>
+            },
+            {
+                path:'/toysdetails/:id',
+                element:<PrivetRoute><ToysDetails></ToysDetails></PrivetRoute>
             },
             
             {
