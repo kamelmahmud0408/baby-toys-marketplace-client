@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2'
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const AddToy = () => {
+
+
+    const {user}=useContext(AuthContext)
+
     const {
         register,
         handleSubmit,
@@ -71,6 +76,7 @@ const AddToy = () => {
                             className="w-full p-2 border"
                             {...register("sellerName")}
                             placeholder="SellerName"
+                            defaultValue={user?.displayName}
                             
                         />
 
@@ -82,6 +88,7 @@ const AddToy = () => {
                             className="w-full p-2 border"
                             {...register("email")}
                             placeholder="email"
+                            defaultValue={user?.email}
                         
                         />
 
@@ -123,9 +130,9 @@ const AddToy = () => {
                     <div>
                     <h3 className='text-xl font-semibold mb-3'>Name</h3>
                         <select className="w-full p-2 border" {...register("category")}>
-                            <option value="regularCar">Regular Car</option>
-                            <option value="ruck"> Regular Truck</option>
-                            <option value="puliceCar">police car</option>
+                            <option value="RegularCar">Regular Car</option>
+                            <option value="Truck"> Regular Truck</option>
+                            <option value="PuliceCar">police car</option>
                             
                         </select>
                     </div>

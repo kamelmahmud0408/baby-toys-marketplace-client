@@ -22,7 +22,8 @@ const Navbar = () => {
         {
             user ? <div>{
                 user && <span className='text-white flex items-center gap-4'>
-                    <li><Link to='/addtoy'>Add Toy</Link></li>
+                    <li><Link className='text-orange-500' to='/addtoy'>Add Toy</Link></li>
+                    <li><Link className='text-orange-500' to='/mytoys'>My Toys</Link></li>
                    <li> <div className='tooltip' data-tip={user.displayName}><img className='w-10 h-10 rounded-full tooltip ' src={user.photoURL} alt="" /></div></li> <li className='text-black'><Link onClick={handleLogOut} to='/login'>LogOut</Link></li> </span>
             }</div> : <li><Link to='/login'>Login</Link></li>
         }
