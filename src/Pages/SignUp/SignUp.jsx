@@ -58,7 +58,8 @@ const updateUser=(loggedUser,name,photo)=>{
 
 const handleGoogle= ()=>{
     signInWithGoogle()
-    .then(()=>{
+    .then((result)=>{
+        console.log(result)
         navigate(from, { replace: true })
     })
     .catch(error=>{

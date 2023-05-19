@@ -7,7 +7,7 @@ const Navbar = () => {
     const { logOut, user } = useContext(AuthContext)
 
     const handleLogOut = () => {
-        logOut()
+            logOut()
             .then(result => {
 
             })
@@ -18,11 +18,13 @@ const Navbar = () => {
 
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/alltoys'>All Toys</Link></li>
-        <li><Link to='/addtoy'>Add Toy</Link></li>
+
         {
             user ? <div>{
-                user && <span className='text-white flex items-center gap-4'><div className='tooltip' data-tip={user.displayName}><img className='w-10 h-10 rounded-full tooltip ' src={user.photoURL} alt="" /></div> <li className='text-black'><Link onClick={handleLogOut}  to='/login'>LogOut</Link></li> </span>
-            }</div> :<li><Link to='/login'>Login</Link></li> 
+                user && <span className='text-white flex items-center gap-4'>
+                    <li><Link to='/addtoy'>Add Toy</Link></li>
+                   <li> <div className='tooltip' data-tip={user.displayName}><img className='w-10 h-10 rounded-full tooltip ' src={user.photoURL} alt="" /></div></li> <li className='text-black'><Link onClick={handleLogOut} to='/login'>LogOut</Link></li> </span>
+            }</div> : <li><Link to='/login'>Login</Link></li>
         }
 
     </>
@@ -44,7 +46,7 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-end hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 space-x-6">
+                <ul className=" flex items-center  menu-horizontal px-1 space-x-6 text-orange-500">
                     {navBarItems}
                 </ul>
             </div>
