@@ -1,7 +1,44 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Login = () => {
+    const { signIn, signInWithGoogle } = useContext(AuthContext)
+
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location.state?.from?.pathname || '/'
+
+    const handleLogin = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signIn(email, password)
+            .then(result => {
+                console.log(result)
+                form.reset()
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+    }
+
+    const handleGoogle = () => {
+        signInWithGoogle()
+            .then(() => {
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+    }
+
     return (
         <div className="hero min-h-screen ">
             <div className="hero-content flex-col lg:flex-row">
@@ -10,7 +47,7 @@ const Login = () => {
                 </div>
                 <div className="card flex-shrink-0  shadow-xl bg-base-100 w-1/3  mx-auto p-5">
                     <h1 className="text-5xl my-3 text-center font-bold">Please Login</h1>
-                    <form  >
+                    <form onSubmit={handleLogin} >
                         <div>
                             <label htmlFor="">Email</label> <br />
                             <input className='border w-full p-3 rounded mt-4' type="email" name="email" id="" placeholder='Your Email' required />
@@ -24,7 +61,7 @@ const Login = () => {
                     </form>
                     <div className="divider">OR</div>
                     <div>
-                         <p className='btn btn-block text-white bg-orange-500 '>Google</p>
+                        <p onClick={handleGoogle} className='btn btn-block text-white bg-orange-500 '>Google</p>
                     </div>
                     <p className='mt-5 text-center'><span>  Don't Have an Account? <Link className='text-blue-600' to="/signup">Register</Link></span></p>
                 </div>

@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Provider/AuthProvider';
 
 const Navbar = () => {
+
+    const { logOut, user } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(result => {
+
+            })
+            .catch()
+    }
 
     const navBarItems = <>
 
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/alltoys'>All Toys</Link></li>
         <li><Link to='/addtoy'>Add Toy</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        {
+            user ? <div>{
+                user && <span className='text-white flex items-center gap-4'><div className='tooltip' data-tip={user.displayName}><img className='w-10 h-10 rounded-full tooltip ' src={user.photoURL} alt="" /></div> <li className='text-black'><Link onClick={handleLogOut}  to='/login'>LogOut</Link></li> </span>
+            }</div> :<li><Link to='/login'>Login</Link></li> 
+        }
 
     </>
 
@@ -25,7 +40,7 @@ const Navbar = () => {
                 </div>
                 <div className=''>
                     <a className="btn btn-ghost normal-case text-xl ">daisyUI</a>
-                   
+
                 </div>
             </div>
             <div className="navbar-end hidden lg:flex">

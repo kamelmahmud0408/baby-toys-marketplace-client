@@ -1,10 +1,16 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
 
-    const {createUser}=useContext(AuthContext)
+    const navigate=useNavigate()
+    const location=useLocation()
+    const from=location.state?.from?.pathname || '/login'
+
+    const {createUser,signInWithGoogle,logOut}=useContext(AuthContext)
+    const [error,setError]=useState('')
 
 const handleSignUp=(event)=>{
     event.preventDefault()
@@ -16,15 +22,49 @@ const handleSignUp=(event)=>{
     const password = form.password.value;
     console.log(name,photo,email,password)
 
+
+    setError('')
+
+    if(password.length < 6){
+        setError('password must be 6 characters or longer')
+        return
+    }
+
+
     createUser(email,password)
     .then(result =>{
         const loggedUser=result.user
         console.log(loggedUser)
+        updateUser(loggedUser,name,photo)
+        logOut(navigate(from, { replace: true }) )
     })
     .catch(error=>{
         console.log(error)
     })
     
+}
+
+const updateUser=(loggedUser,name,photo)=>{
+    updateProfile(loggedUser,{
+        displayName: name,
+        photoURL:photo
+    })
+    .then(()=>{})
+    .catch(error =>{
+        console.log(error)
+    })
+
+}
+
+const handleGoogle= ()=>{
+    signInWithGoogle()
+    .then(()=>{
+        navigate(from, { replace: true })
+    })
+    .catch(error=>{
+        console.log(error)
+    })
+
 }
 
 
@@ -58,7 +98,7 @@ const handleSignUp=(event)=>{
                     </form>
                     <div className="divider">OR</div>
                     <div>
-                        <p className='btn btn-block text-white bg-orange-500 '>Google</p>
+                        <p onClick={handleGoogle} className='btn btn-block text-white bg-orange-500 '>Google</p>
                     </div>
                     <p className='mt-5 text-center'><span>  Already have an account ? Please <Link className='text-blue-600' to="/login">login</Link></span></p>
                 </div>
