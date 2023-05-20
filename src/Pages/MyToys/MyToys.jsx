@@ -6,8 +6,7 @@ const MyToys = () => {
 
     const { user } = useContext(AuthContext)
     const [myToys, setMyToys] = useState([])
-
-   
+    
 
     useEffect(() => {
         const url = `http://localhost:5000/toys?email=${user?.email}`;
@@ -17,7 +16,7 @@ const MyToys = () => {
                 console.log(data)
                 setMyToys(data)
             })
-    }, [user])
+    }, [])
 
     return (
         <div>
@@ -45,7 +44,7 @@ const MyToys = () => {
                     </thead>
                     <tbody>
                         {
-                            myToys.map(mytoy => <MyToysRow key={mytoy._id} mytoy={mytoy}></MyToysRow>)
+                            myToys.map(mytoy => <MyToysRow key={mytoy._id} mytoy={mytoy} myToys={myToys} setMyToys={setMyToys}></MyToysRow>)
                         }
                     </tbody>
 

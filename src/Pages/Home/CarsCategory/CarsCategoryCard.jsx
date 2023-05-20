@@ -8,7 +8,7 @@ const CarsCategoryCard = ({ toy }) => {
     const {_id, toyName, image, price, rating } = toy;
 
     return (
-        <div className="card w-full bg-base-100 shadow-xl">
+        <div className="card w-full bg-base-100 shadow">
             <figure><img className='h-80' src={image} alt="" /></figure>
             <div className="card-body">
                 <div className='flex justify-between'>

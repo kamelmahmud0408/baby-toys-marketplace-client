@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const MyToysRow = ({ mytoy }) => {
+const MyToysRow = ({ mytoy,myToys,setMyToys }) => {
     const { _id, toyName, image, sellerName, email, price, quantity, rating, description ,category} = mytoy;
 
 
@@ -19,7 +19,7 @@ const MyToysRow = ({ mytoy }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/toysById/${_id}`,{
+                fetch(`http://localhost:5000/toys/${_id}`,{
                     method:'DELETE'
                 })
                     .then(res => res.json())
@@ -28,9 +28,11 @@ const MyToysRow = ({ mytoy }) => {
                         if (data.deletedCount > 0) {
                             Swal.fire(
                                 'Deleted!',
-                                'Your file has been deleted.',
+                                'Your toy has been deleted.',
                                 'success'
                             )
+                            const remainingToys=myToys.filter(toys=> toys._id !== _id)
+                            setMyToys(remainingToys)
                         }
                     })
             }
