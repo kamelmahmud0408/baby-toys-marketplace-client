@@ -22,7 +22,7 @@ const AddToy = () => {
     const onSubmit = (data) => {
         console.log(data)
 
-        fetch('http://localhost:5000/toys',{
+        fetch('https://baby-toys-marketplace-server.vercel.app/toys',{
             method:'POST',
             headers:{
                 "content-type": "application/json"
@@ -136,7 +136,7 @@ const AddToy = () => {
                     <h3 className='text-xl font-semibold mb-3'>Name</h3>
                         <select className="w-full p-2 border" {...register("category")}>
                             <option value="RegularCar">Regular Car</option>
-                            <option value="Truck"> Regular Truck</option>
+                            <option value="Truck">  Truck</option>
                             <option value="PuliceCar">police car</option>
                             
                         </select>

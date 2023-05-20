@@ -3,10 +3,16 @@ import Banner from '../Banner/Banner';
 import PhotoGallery from '../PhotoGallery/PhotoGallery';
 import CarsCategory from '../CarsCategory/CarsCategory';
 import CustomerReview from '../CustomerReview/CustomerReview';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init({
+  duration: 1200,
+});
 
 const Home = () => {
     return (
-      <div>
+      <div data-aos="zoom-in">
+        
          <Banner></Banner>
          <PhotoGallery></PhotoGallery>
          <CarsCategory></CarsCategory>

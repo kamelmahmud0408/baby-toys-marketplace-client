@@ -27,7 +27,7 @@ const UpdateToy = () => {
     const onSubmit = (data) => {
         console.log(data)
         
-        fetch(`http://localhost:5000/toys/${_id}`, {
+        fetch(`https://baby-toys-marketplace-server.vercel.app/toys/${_id}`, {
             method: 'PUT',
             headers: {
                 "content-type": "application/json"

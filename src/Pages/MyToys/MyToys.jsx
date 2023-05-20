@@ -6,10 +6,11 @@ const MyToys = () => {
 
     const { user } = useContext(AuthContext)
     const [myToys, setMyToys] = useState([])
-    
+    const [activeTab,seActiveTab]=useState('')
+
 
     useEffect(() => {
-        const url = `http://localhost:5000/toys?email=${user?.email}`;
+        const url = `https://baby-toys-marketplace-server.vercel.app/toys?email=${user?.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -18,16 +19,26 @@ const MyToys = () => {
             })
     }, [])
 
+
+    const handleClick=(value)=>{
+        console.log(value)
+        seActiveTab(value)
+    }
+
     return (
         <div>
-          
+            <div className='text-center'>
+                <button onClick={()=>handleClick('price')}>assending</button>
+                <button onClick={()=>handleClick('price')}>desssending</button>
+                {console.log(activeTab)}
+            </div>
             <div className="overflow-x-auto w-full mt-10">
                 <table className="table w-full">
                     {/* head */}
                     <thead>
                         <tr>
                             <th>
-                               delete
+                                delete
                             </th>
                             <th>image</th>
                             <th>toy name</th>

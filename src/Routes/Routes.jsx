@@ -36,13 +36,13 @@ const router = createBrowserRouter([
             {
                 path: '/updatetoy/:id',
                 element: <UpdateToy></UpdateToy>,
-                loader: ({ params }) => fetch(`http://localhost:5000/toysById/${params.id}`)
+                loader: ({ params }) => fetch(`https://baby-toys-marketplace-server.vercel.app/toysById/${params.id}`)
             },
 
             {
                 path: '/toysdetails/:id',
                 element: <PrivetRoute><ToysDetails></ToysDetails></PrivetRoute>,
-                loader:({ params }) => fetch(`http://localhost:5000/toysById/${params.id}`)
+                loader:({ params }) => fetch(`https://baby-toys-marketplace-server.vercel.app/toysById/${params.id}`)
 
             },
 

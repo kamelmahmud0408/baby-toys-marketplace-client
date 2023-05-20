@@ -9,7 +9,7 @@ const CarsCategory = () => {
     const [activeTab, setActiveTab] = useState('RegularCar')
 
     useEffect(() => {
-        fetch(`http://localhost:5000/toysByCategory/${activeTab}`)
+        fetch(`https://baby-toys-marketplace-server.vercel.app/toysByCategory/${activeTab}`)
             .then(res => res.json())
             .then(data => {
                 setToys(data)
