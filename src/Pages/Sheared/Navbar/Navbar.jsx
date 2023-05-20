@@ -42,7 +42,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className=''>
-                    <a className="btn btn-ghost normal-case text-xl ">daisyUI</a>
+                    <a className=" btn btn-ghost text-4xl font-bold ">Kids <span className='text-orange-500'>Zone</span></a>
 
                 </div>
             </div>

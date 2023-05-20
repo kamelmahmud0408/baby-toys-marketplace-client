@@ -20,29 +20,33 @@ const MyToys = () => {
 
     return (
         <div>
-            <h2>{myToys.length}</h2>
-            <div className="overflow-x-auto w-full">
+          
+            <div className="overflow-x-auto w-full mt-10">
                 <table className="table w-full">
                     {/* head */}
                     <thead>
                         <tr>
                             <th>
-                                <label>
-                                    <input type="checkbox" className="checkbox" />
-                                </label>
+                               delete
                             </th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
-                            <th></th>
+                            <th>image</th>
+                            <th>toy name</th>
+                            <th>seller name</th>
+                            <th>email</th>
+                            <th>price</th>
+                            <th>quantity</th>
+                            <th>rating</th>
+                            <th>descrittion</th>
+                            <th>update</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                     {
-                        myToys.map(mytoy=><MyToysRow key={mytoy._id} mytoy={mytoy}></MyToysRow>)
-                     }      
+                        {
+                            myToys.map(mytoy => <MyToysRow key={mytoy._id} mytoy={mytoy}></MyToysRow>)
+                        }
                     </tbody>
-                    
+
 
                 </table>
             </div>
