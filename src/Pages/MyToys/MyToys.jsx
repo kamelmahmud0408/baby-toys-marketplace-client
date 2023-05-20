@@ -36,6 +36,7 @@ const MyToys = () => {
                             <th>price</th>
                             <th>quantity</th>
                             <th>rating</th>
+                            <th>category</th>
                             <th>descrittion</th>
                             <th>update</th>
 

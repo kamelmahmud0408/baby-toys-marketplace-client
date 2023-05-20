@@ -1,17 +1,22 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import Swal from 'sweetalert2'
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
-import { useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const AddToy = () => {
+const UpdateToy = () => {
 
     const navigate = useNavigate()
     const location = useLocation()
 
     const from = location.state?.from?.pathname || '/mytoys'
 
-    const {user}=useContext(AuthContext)
+    const toys = useLoaderData()
+    const { _id, toyName, image, sellerName, email, price, quantity, rating, description } = toys;
+    console.log(toys)
+
+
+    const { user } = useContext(AuthContext)
 
     const {
         register,
@@ -23,27 +28,27 @@ const AddToy = () => {
     const onSubmit = (data) => {
         console.log(data)
 
-        fetch('http://localhost:5000/toys',{
-            method:'POST',
-            headers:{
+        fetch(`http://localhost:5000/toys/${_id}`, {
+            method: 'PUT',
+            headers: {
                 "Content-Type": "application/json"
             },
-            body:JSON.stringify(data)
-            
+            body: JSON.stringify(data)
+
         })
-        .then(res =>res.json())
-        .then(result =>{
-            console.log(result)
-            if(result.insertedId){
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'product added successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
-                  })
-            }
-            navigate(from, { replace: true })
-        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result)
+                if (result.modifiedCount >0) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Product update successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+                navigate(from, { replace: true })
+            })
     }
 
 
@@ -51,16 +56,17 @@ const AddToy = () => {
         <div className='mt-10' >
             <form onSubmit={handleSubmit(onSubmit)}>
                 {errors.exampleRequired && <span>This field is required</span>}
-                
-                   <div className='grid grid-cols-2 gap-3'>
-                   <div className='mb-3'>
+
+                <div className='grid grid-cols-2 gap-3'>
+                    <div className='mb-3'>
                         <h3 className='text-xl font-semibold mb-3'>Toy Name</h3>
 
                         <input
                             className=" w-full p-2 border"
                             {...register("toyName")}
                             placeholder="Toy Name"
-                            
+                            defaultValue={toyName}
+
                         />
 
                     </div>
@@ -71,10 +77,11 @@ const AddToy = () => {
                             {...register("image")}
                             placeholder="image link"
                             type="url"
-                           
+                            defaultValue={image}
+
                         />
                     </div>
-                
+
                     <div className='mb-3'>
                         <h3 className='text-xl font-semibold mb-3'>Seller Name</h3>
 
@@ -83,7 +90,7 @@ const AddToy = () => {
                             {...register("sellerName")}
                             placeholder="SellerName"
                             defaultValue={user?.displayName}
-                            
+
                         />
 
                     </div>
@@ -95,7 +102,7 @@ const AddToy = () => {
                             {...register("email")}
                             placeholder="email"
                             defaultValue={user?.email}
-                        
+
                         />
 
                     </div>
@@ -106,18 +113,20 @@ const AddToy = () => {
                             className="w-full p-2 border"
                             {...register("price")}
                             placeholder="Price"
-                            
+                            defaultValue={price}
+
                         />
 
                     </div>
                     <div className='mb-3'>
-                        <h3 className='text-xl font-semibold mb-3'>Availavle Quantity</h3>
+                        <h3 className='text-xl font-semibold mb-3'>Available Quantity</h3>
 
                         <input
                             className="w-full p-2 border"
                             {...register("quantity")}
                             placeholder="Available Quantity"
-                            
+                            defaultValue={quantity}
+
                         />
 
                     </div>
@@ -128,18 +137,19 @@ const AddToy = () => {
                             className="w-full p-2 border"
                             {...register("rating")}
                             placeholder="Rating"
-                           
+                            defaultValue={rating}
+
                         />
 
                     </div>
-                    
+
                     <div>
-                    <h3 className='text-xl font-semibold mb-3'>Name</h3>
+                        <h3 className='text-xl font-semibold mb-3'>Name</h3>
                         <select className="w-full p-2 border" {...register("category")}>
                             <option value="RegularCar">Regular Car</option>
                             <option value="Truck"> Regular Truck</option>
                             <option value="PuliceCar">police car</option>
-                            
+
                         </select>
                     </div>
                     <div className='mb-3'>
@@ -149,11 +159,12 @@ const AddToy = () => {
                             className="w-full p-4 border"
                             {...register("description")}
                             placeholder="Description"
-                            
+                            defaultValue={description}
+
                         />
 
                     </div>
-                   </div>
+                </div>
 
 
                 <input className=" btn btn-primary mt-5 w-full" value="Add Toy" type="submit" />
@@ -162,4 +173,4 @@ const AddToy = () => {
     );
 };
 
-export default AddToy;
+export default UpdateToy;

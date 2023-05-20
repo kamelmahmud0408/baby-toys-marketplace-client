@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const MyToysRow = ({ mytoy }) => {
-    const { _id, toyName, image, sellerName, email, price, quantity, rating, description } = mytoy;
+    const { _id, toyName, image, sellerName, email, price, quantity, rating, description ,category} = mytoy;
 
 
     const handleDelete = (_id) => {
@@ -75,10 +76,13 @@ const MyToysRow = ({ mytoy }) => {
                 {rating}
             </td>
             <td>
-                {description}
+                {category}
+            </td>
+            <td>
+                {description.slice(0,5)}
             </td>
             <th>
-                <button className="btn btn-ghost btn-xs">details</button>
+                <Link to={`/updatetoy/${_id}`}><button className="btn btn-error btn-xs">update</button></Link>
             </th>
         </tr>
     );
