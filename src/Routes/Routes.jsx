@@ -11,48 +11,48 @@ import MyToys from "../Pages/MyToys/MyToys";
 import ToysDetails from "../Pages/ToysDetails/ToysDetails";
 import UpdateToy from "../Pages/UpdateToy/UpdateToy";
 
-const router=createBrowserRouter([
+const router = createBrowserRouter([
     {
-        path:'/',
-        element:<Main></Main>,
-        errorElement:<ErrorPage></ErrorPage>,
-        children:[
+        path: '/',
+        element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
+        children: [
             {
-                path:'/',
-                element:<Home></Home>
+                path: '/',
+                element: <Home></Home>
             },
             {
-                path:'/alltoys',
-                element:<AllToys></AllToys>
+                path: '/alltoys',
+                element: <AllToys></AllToys>
             },
             {
-                path:'/addtoy',
-                element:<PrivetRoute><AddToy></AddToy></PrivetRoute>
+                path: '/addtoy',
+                element: <PrivetRoute><AddToy></AddToy></PrivetRoute>
             },
             {
-                path:'/mytoys',
-                element:<PrivetRoute><MyToys></MyToys></PrivetRoute>
+                path: '/mytoys',
+                element: <PrivetRoute><MyToys></MyToys></PrivetRoute>
             },
             {
-                path:'/updatetoy/:id',
-                element:<UpdateToy></UpdateToy>,
-                loader:({params})=> fetch(`http://localhost:5000/toys/${params.id}`)
+                path: '/updatetoy/:id',
+                element: <UpdateToy></UpdateToy>,
+                loader: ({ params }) => fetch(`http://localhost:5000/toysById/${params.id}`)
             },
-            
+
             {
-                path:'/toysdetails/:id',
-                element:<PrivetRoute><ToysDetails></ToysDetails></PrivetRoute>
+                path: '/toysdetails/:id',
+                element: <PrivetRoute><ToysDetails></ToysDetails></PrivetRoute>
             },
-            
+
             {
-                path:'/login',
-                element:<Login></Login>
+                path: '/login',
+                element: <Login></Login>
             },
             {
-                path:'/signup',
-                element:<SignUp></SignUp>
+                path: '/signup',
+                element: <SignUp></SignUp>
             }
-            
+
         ]
     }
 ])

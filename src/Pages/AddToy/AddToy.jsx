@@ -5,18 +5,17 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const AddToy = () => {
-
     const navigate = useNavigate()
     const location = useLocation()
 
     const from = location.state?.from?.pathname || '/mytoys'
+
 
     const {user}=useContext(AuthContext)
 
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm();
 
@@ -26,7 +25,7 @@ const AddToy = () => {
         fetch('http://localhost:5000/toys',{
             method:'POST',
             headers:{
-                "Content-Type": "application/json"
+                "content-type": "application/json"
             },
             body:JSON.stringify(data)
             
@@ -111,7 +110,7 @@ const AddToy = () => {
 
                     </div>
                     <div className='mb-3'>
-                        <h3 className='text-xl font-semibold mb-3'>Availavle Quantity</h3>
+                        <h3 className='text-xl font-semibold mb-3'>Available Quantity</h3>
 
                         <input
                             className="w-full p-2 border"

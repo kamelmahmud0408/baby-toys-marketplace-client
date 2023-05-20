@@ -42,7 +42,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className=''>
-                    <a className=" btn btn-ghost text-4xl font-bold ">Kids <span className='text-orange-500'>Zone</span></a>
+                    <a className=" btn btn-ghost text-4xl font-bold ">Toys <span className='text-orange-500'>Murt</span></a>
 
                 </div>
             </div>

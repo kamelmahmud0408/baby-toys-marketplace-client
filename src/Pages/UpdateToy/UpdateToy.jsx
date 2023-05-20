@@ -12,7 +12,7 @@ const UpdateToy = () => {
     const from = location.state?.from?.pathname || '/mytoys'
 
     const toys = useLoaderData()
-    const { _id, toyName, image, sellerName, email, price, quantity, rating, description } = toys;
+    const { _id, toyName, image, price, quantity, rating, description } = toys;
     console.log(toys)
 
 
@@ -21,17 +21,16 @@ const UpdateToy = () => {
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm();
 
     const onSubmit = (data) => {
         console.log(data)
-
+        
         fetch(`http://localhost:5000/toys/${_id}`, {
             method: 'PUT',
             headers: {
-                "Content-Type": "application/json"
+                "content-type": "application/json"
             },
             body: JSON.stringify(data)
 
@@ -53,6 +52,7 @@ const UpdateToy = () => {
 
 
     return (
+        
         <div className='mt-10' >
             <form onSubmit={handleSubmit(onSubmit)}>
                 {errors.exampleRequired && <span>This field is required</span>}
@@ -167,7 +167,7 @@ const UpdateToy = () => {
                 </div>
 
 
-                <input className=" btn btn-primary mt-5 w-full" value="Add Toy" type="submit" />
+                <input  className=" btn btn-primary mt-5 w-full" value="update Toy" type="submit" />
             </form>
         </div>
     );

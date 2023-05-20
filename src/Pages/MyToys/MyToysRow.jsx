@@ -19,7 +19,7 @@ const MyToysRow = ({ mytoy }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/toys/${_id}`,{
+                fetch(`http://localhost:5000/toysById/${_id}`,{
                     method:'DELETE'
                 })
                     .then(res => res.json())
