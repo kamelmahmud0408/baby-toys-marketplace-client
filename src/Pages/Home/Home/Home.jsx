@@ -5,6 +5,7 @@ import CarsCategory from '../CarsCategory/CarsCategory';
 import CustomerReview from '../CustomerReview/CustomerReview';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import AboutUs from '../AboutUs/AboutUs';
 AOS.init({
   duration: 1200,
 });
@@ -17,6 +18,7 @@ const Home = () => {
          <PhotoGallery></PhotoGallery>
          <CarsCategory></CarsCategory>
          <CustomerReview></CustomerReview>
+         <AboutUs></AboutUs>
       </div>
     );
 };
