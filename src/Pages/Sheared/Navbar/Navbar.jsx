@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 
 const Navbar = () => {
@@ -44,7 +44,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex flex-row  lg:flex-col'>
                     <img className='w-20 ms-10' src="https://i.ibb.co/mXwW3FX/car-vector-object-transportation-illustration-260nw-1667537305-removebg-preview-1.png" alt="" />
-                    <Link to='/'><a className=" ms-8 lg:ms-0 text-2xl lg:text-4xl font-bold ">Toys <span className='text-orange-500'>Murt</span></a></Link>
+                    <a className=" ms-8 lg:ms-0 text-2xl lg:text-4xl font-bold ">Toys <span className='text-orange-500'>Murt</span></a>
 
                 </div>
             </div>
