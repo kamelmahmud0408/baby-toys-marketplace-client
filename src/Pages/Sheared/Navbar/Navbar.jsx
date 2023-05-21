@@ -7,7 +7,7 @@ const Navbar = () => {
     const { logOut, user } = useContext(AuthContext)
 
     const handleLogOut = () => {
-            logOut()
+        logOut()
             .then(result => {
 
             })
@@ -22,10 +22,10 @@ const Navbar = () => {
 
         {
             user ? <div>{
-                user && <span className='text-white flex items-center gap-4'>
+                user && <span className='text-white flex flex-col lg:flex-row lg:items-center gap-4'>
                     <li><Link className='text-orange-500' to='/addtoy'>Add Toy</Link></li>
                     <li><Link className='text-orange-500' to='/mytoys'>My Toys</Link></li>
-                   <li> <div className='tooltip' data-tip={user.displayName}><img className='w-10 h-10 rounded-full tooltip ' src={user.photoURL} alt="" /></div></li> <li className='text-black'><Link onClick={handleLogOut} to='/login'>LogOut</Link></li> </span>
+                    <li > <div ><img className='w-10 h-10 rounded-full tooltip ' src={user.photoURL} alt="" /></div></li> <li className='text-orange-500'><Link onClick={handleLogOut} to='/login'>LogOut</Link></li> </span>
             }</div> : <li><Link to='/login'>Login</Link></li>
         }
 
@@ -42,13 +42,14 @@ const Navbar = () => {
                         {navBarItems}
                     </ul>
                 </div>
-                <div className=''>
-                    <a className=" btn btn-ghost text-4xl font-bold ">Toys <span className='text-orange-500'>Murt</span></a>
+                <div className='flex flex-row  lg:flex-col'>
+                    <img className='w-20 ms-10' src="https://i.ibb.co/mXwW3FX/car-vector-object-transportation-illustration-260nw-1667537305-removebg-preview-1.png" alt="" />
+                    <a className=" ms-8 lg:ms-0 text-2xl lg:text-4xl font-bold ">Toys <span className='text-orange-500'>Murt</span></a>
 
                 </div>
             </div>
             <div className="navbar-end hidden lg:flex">
-                <ul className=" flex items-center  menu-horizontal px-1 space-x-6 text-orange-500">
+                <ul className=" font-bold text-xl flex items-center  menu-horizontal px-1 space-x-6 text-orange-500">
                     {navBarItems}
                 </ul>
             </div>

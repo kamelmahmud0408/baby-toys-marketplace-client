@@ -7,7 +7,7 @@ const MyToys = () => {
     const { user } = useContext(AuthContext)
     const [myToys, setMyToys] = useState([])
     // const [activeTab,seActiveTab]=useState('')
-    
+
 
     useEffect(() => {
         const url = `https://baby-toys-marketplace-server.vercel.app/toys?email=${user?.email}`;
@@ -19,15 +19,15 @@ const MyToys = () => {
             })
     }, [user])
 
-    // useEffect(() => {
-    //     const url = `https://baby-toys-marketplace-server.vercel.app/sortingToys?sort=${asc ? 'asc' : 'desc'}`;
-    //     fetch(url)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data)
-    //             setMyToys(data)
-    //         })
-    // }, [asc])
+ const handleSort=(event)=>{
+    const sort = event.target.value;
+    fetch(`https://baby-toys-marketplace-server.vercel.app/sortByPrice?sort=${sort}`)
+    .then(res =>res.json()
+    .then(data=>{
+        setMyToys(data)
+    })
+    )
+ }
 
 
 
@@ -35,11 +35,10 @@ const MyToys = () => {
     return (
         <div>
             <div className='text-center'>
-                {/* <button
-                    className="btn btn-primary"
-                    onClick={() => setAsc(!asc)}
-                >{asc ? 'Price: High to Low' : 'Price: Low to High'}</button> */}
-                {/* {console.log(activeTab)} */}
+                <select onChange={handleSort} name="sort" >
+                    <option value="1">Assending</option>
+                    <option value="-1">Desending</option>
+                </select>
             </div>
             <div className="overflow-x-auto w-full mt-10">
                 <table className="table w-full">

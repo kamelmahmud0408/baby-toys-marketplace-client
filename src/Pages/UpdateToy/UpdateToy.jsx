@@ -26,7 +26,7 @@ const UpdateToy = () => {
 
     const onSubmit = (data) => {
         console.log(data)
-        
+
         fetch(`https://baby-toys-marketplace-server.vercel.app/toys/${_id}`, {
             method: 'PUT',
             headers: {
@@ -38,7 +38,7 @@ const UpdateToy = () => {
             .then(res => res.json())
             .then(result => {
                 console.log(result)
-                if (result.modifiedCount >0) {
+                if (result.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Success!',
                         text: 'Product update successfully',
@@ -52,8 +52,9 @@ const UpdateToy = () => {
 
 
     return (
-        
+
         <div className='mt-10' >
+            <h1 className='text-center text-3xl text-orange-500 font-bold my-10'>Update Toy</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {errors.exampleRequired && <span>This field is required</span>}
 
@@ -167,7 +168,7 @@ const UpdateToy = () => {
                 </div>
 
 
-                <input  className=" btn btn-primary mt-5 w-full" value="update Toy" type="submit" />
+                <input className=" btn btn-error mt-5 w-full" value="update Toy" type="submit" />
             </form>
         </div>
     );

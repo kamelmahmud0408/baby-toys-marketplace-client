@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
+import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
 
 const CarsCategoryCard = ({ toy }) => {
-
+   const [alert,setAlert]=useState(true)
     const {_id, toyName, image, price, rating } = toy;
+
+    const handleAlert=()=>{
+        if(!alert){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href="">Why do I have this issue?</a>'
+              })
+        }
+        
+    }
 
     return (
         <div className="card w-full bg-base-100 shadow">
@@ -20,8 +33,8 @@ const CarsCategoryCard = ({ toy }) => {
                     <Rating style={{ maxWidth: 100 }} value={rating} readOnly />
                 </div>
 
-                <div className="card-actions mt-5 justify-center">
-                    <Link to={`/toysdetails/${_id}`}><button className="btn btn-error">Veiw Details</button></Link>
+                <div className=" mt-5 w-full">
+                    <Link to={`/toysdetails/${_id}`}><button onClick={()=>handleAlert(setAlert(false))} className="btn btn-error btn-block ">Veiw Details</button></Link>
                 </div>
             </div>
         </div>

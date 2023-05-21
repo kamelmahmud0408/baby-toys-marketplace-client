@@ -48,6 +48,7 @@ const AddToy = () => {
 
     return (
         <div className='mt-10' >
+            <h1 className='text-center text-3xl text-orange-500 font-bold my-10'>Add a Toy</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {errors.exampleRequired && <span>This field is required</span>}
                 
@@ -155,7 +156,7 @@ const AddToy = () => {
                    </div>
 
 
-                <input className=" btn btn-primary mt-5 w-full" value="Add Toy" type="submit" />
+                <input className=" btn btn-error mt-5 w-full" value="Add Toy" type="submit" />
             </form>
         </div>
     );
