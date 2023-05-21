@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet-async';
 const ToysDetails = () => {
 
     const toyDetails = useLoaderData()
-    console.log(toyDetails)
+    
     const { _id, toyName, image, price, quantity, sellerName, email, rating, description } = toyDetails;
 
     return (

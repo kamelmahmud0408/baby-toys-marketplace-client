@@ -7,15 +7,14 @@ const MyToys = () => {
 
     const { user } = useContext(AuthContext)
     const [myToys, setMyToys] = useState([])
-    // const [activeTab,seActiveTab]=useState('')
-
+   
 
     useEffect(() => {
         const url = `https://baby-toys-marketplace-server.vercel.app/toys?email=${user?.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                
                 setMyToys(data)
             })
     }, [user])
