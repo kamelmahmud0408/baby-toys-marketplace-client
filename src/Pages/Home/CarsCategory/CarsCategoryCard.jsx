@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Provider/AuthProvider';
 
 const CarsCategoryCard = ({ toy }) => {
-   const [alert,setAlert]=useState(true)
+
+    const {user}=useContext(AuthContext)
+   
     const {_id, toyName, image, price, rating } = toy;
 
     const handleAlert=()=>{
-        if(!alert){
+        if(!user){
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Something went wrong!',
+                text: '!Please Login fast',
                 footer: '<a href="">Why do I have this issue?</a>'
               })
         }
@@ -34,7 +37,7 @@ const CarsCategoryCard = ({ toy }) => {
                 </div>
 
                 <div className=" mt-5 w-full">
-                    <Link to={`/toysdetails/${_id}`}><button onClick={()=>handleAlert(setAlert(false))} className="btn btn-error btn-block ">Veiw Details</button></Link>
+                    <Link to={`/toysdetails/${_id}`}><button onClick={handleAlert} className="btn btn-error btn-block ">Veiw Details</button></Link>
                 </div>
             </div>
         </div>
