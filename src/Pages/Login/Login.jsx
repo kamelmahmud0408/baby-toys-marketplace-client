@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import { Helmet } from 'react-helmet-async';
+
 
 const Login = () => {
     const { signIn, signInWithGoogle } = useContext(AuthContext)
 
     const navigate = useNavigate()
     const location = useLocation()
+
 
     const from = location.state?.from?.pathname || '/'
 
@@ -41,6 +44,9 @@ const Login = () => {
 
     return (
         <div className="hero min-h-screen ">
+            <Helmet>
+                <title> ToysMurt | Login</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <div className=" w-1/2 ">
                     <img className='w-full' src="https://img.freepik.com/free-vector/sign-concept-illustration_114360-125.jpg?w=2000" alt="" />

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import MyToysRow from './MyToysRow';
+import { Helmet } from 'react-helmet-async';
 
 const MyToys = () => {
 
@@ -19,18 +20,21 @@ const MyToys = () => {
             })
     }, [user])
 
- const handleSort=(event)=>{
-    const sort = event.target.value;
-    fetch(`https://baby-toys-marketplace-server.vercel.app/sortByPrice?sort=${sort}`)
-    .then(res =>res.json()
-    .then(data=>{
-        setMyToys(data)
-    })
-    )
- }
+    const handleSort = (event) => {
+        const sort = event.target.value;
+        fetch(`https://baby-toys-marketplace-server.vercel.app/sortByPrice?sort=${sort}`)
+            .then(res => res.json()
+                .then(data => {
+                    setMyToys(data)
+                })
+            )
+    }
 
     return (
         <div>
+            <Helmet>
+                <title> ToysMurt | My Toys</title>
+            </Helmet>
             <div className='text-center'>
                 <select onChange={handleSort} name="sort" >
                     <option value="1">Assending</option>

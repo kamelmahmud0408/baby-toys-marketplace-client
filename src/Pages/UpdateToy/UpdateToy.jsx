@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateToy = () => {
 
@@ -54,6 +55,9 @@ const UpdateToy = () => {
     return (
 
         <div className='mt-10' >
+            <Helmet>
+                <title> ToysMurt | Update toy</title>
+            </Helmet>
             <h1 className='text-center text-3xl text-orange-500 font-bold my-10'>Update Toy</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {errors.exampleRequired && <span>This field is required</span>}

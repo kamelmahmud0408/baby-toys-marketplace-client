@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 
 const AllToys = () => {
-    const [searchText,setSearchText]=useState('')
+    const [searchText, setSearchText] = useState('')
     const [toys, setToys] = useState([])
 
     useEffect(() => {
@@ -14,27 +15,22 @@ const AllToys = () => {
             })
     }, [])
 
-    const handleSearch=()=>{
-          fetch(`https://baby-toys-marketplace-server.vercel.app/getToysByText/${searchText}`)
-          .then(res => res.json())
-          .then(result=>{
-            setToys(result)
-          })
+    const handleSearch = () => {
+        fetch(`https://baby-toys-marketplace-server.vercel.app/getToysByText/${searchText}`)
+            .then(res => res.json())
+            .then(result => {
+                setToys(result)
+            })
     }
 
 
     return (
         <div>
-            {/* <div className="search-box p-2 text-center">
-          <input
-            onChange={(e) => setSearchText(e.target.value)}
-            type="text"
-            className="p-1"
-          />{" "}
-          <button onClick={handleSearch}>Search</button>
-        </div> */}
+            <Helmet>
+                <title> ToysMurt | All Toys</title>
+            </Helmet>
             <div className='text-center my-5'>
-                <input onChange={(e)=> setSearchText(e.target.value)} className=' border-2 border-orange-500 rounded p-3' placeholder='Search' type="text" />
+                <input onChange={(e) => setSearchText(e.target.value)} className=' border-2 border-orange-500 rounded p-3' placeholder='Search' type="text" />
                 <button className='btn  btn-error px-4 ms-4' onClick={handleSearch}>Search</button>
             </div>
             <div className="overflow-x-auto">

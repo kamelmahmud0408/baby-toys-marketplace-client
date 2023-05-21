@@ -4,7 +4,7 @@ const Banner = () => {
     return (
         <div className="carousel w-full mt-5 h-[400px] lg:h-[600px]">
             <div id="slide1" className="carousel-item relative w-full">
-                <img src="https://thumbs.dreamstime.com/b/lovely-blond-kid-boy-playing-lots-toy-cars-indoor-happy-healthy-child-having-fun-pandemic-coronavirus-quarantine-190645040.jpg" className="w-full rounded-xl" />
+                <img src="https://st2.depositphotos.com/3243153/11614/i/950/depositphotos_116145368-stock-photo-little-kids-playing-with-toy.jpg" className="w-full rounded-xl" />
                 <div className="absolute flex items-center h-full left-0 top-0 rounded-xl bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0) 100%)]">
                     <div className='text-white space-y-5 ms-12 lg:pl-12 w-1/2'>
                         <h2 className=' text-xl lg:text-6xl  font-bold'>We make your children happier with the <span className='text-orange-500'>best toys</span></h2>
@@ -22,7 +22,7 @@ const Banner = () => {
                 </div>
             </div>
             <div id="slide2" className="carousel-item relative w-full">
-                <img src="https://thumbs.dreamstime.com/b/kids-play-toy-cars-children-playing-car-toys-white-room-little-boy-truck-vehicle-transportation-game-kid-parking-147218185.jpg" className="w-full rounded-xl" />
+                <img src="https://media.istockphoto.com/id/646044526/photo/cute-little-blond-kid-boy-playing-with-lots-toy-cars.jpg?s=170667a&w=0&k=20&c=YzOsslexkH2UkO-nTk6fyXAMNtQToo3zF3UNZkq5iBM=" className="w-full rounded-xl" />
                 <div className="absolute flex items-center h-full left-0 top-0 rounded-xl bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0) 100%)]">
                 <div className='text-white space-y-5 ms-12 lg:pl-12 w-1/2'>
                     <h2 className='text-xl lg:text-6xl  font-bold'>We make your children happier with the <span className='text-orange-500'>best toys</span></h2>

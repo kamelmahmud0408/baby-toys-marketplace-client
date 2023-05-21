@@ -2,75 +2,79 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import { Helmet } from 'react-helmet-async';
 
 const SignUp = () => {
 
-    const navigate=useNavigate()
-    const location=useLocation()
-    const from=location.state?.from?.pathname || '/login'
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/login'
 
-    const {createUser,signInWithGoogle,logOut}=useContext(AuthContext)
-    const [error,setError]=useState('')
+    const { createUser, signInWithGoogle, logOut } = useContext(AuthContext)
+    const [error, setError] = useState('')
 
-const handleSignUp=(event)=>{
-    event.preventDefault()
+    const handleSignUp = (event) => {
+        event.preventDefault()
 
-    const form = event.target;
-    const name = form.displayName.value;
-    const photo = form.photo.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(name,photo,email,password)
+        const form = event.target;
+        const name = form.displayName.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, photo, email, password)
 
 
-    setError('')
+        setError('')
 
-    if(password.length < 6){
-        setError('password must be 6 characters or longer')
-        return
+        if (password.length < 6) {
+            setError('password must be 6 characters or longer')
+            return
+        }
+
+
+        createUser(email, password)
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser)
+                updateUser(loggedUser, name, photo)
+                logOut(navigate(from, { replace: true }))
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
     }
 
+    const updateUser = (loggedUser, name, photo) => {
+        updateProfile(loggedUser, {
+            displayName: name,
+            photoURL: photo
+        })
+            .then(() => { })
+            .catch(error => {
+                console.log(error)
+            })
 
-    createUser(email,password)
-    .then(result =>{
-        const loggedUser=result.user
-        console.log(loggedUser)
-        updateUser(loggedUser,name,photo)
-        logOut(navigate(from, { replace: true }) )
-    })
-    .catch(error=>{
-        console.log(error)
-    })
-    
-}
+    }
 
-const updateUser=(loggedUser,name,photo)=>{
-    updateProfile(loggedUser,{
-        displayName: name,
-        photoURL:photo
-    })
-    .then(()=>{})
-    .catch(error =>{
-        console.log(error)
-    })
+    const handleGoogle = () => {
+        signInWithGoogle()
+            .then((result) => {
+                console.log(result)
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log(error)
+            })
 
-}
-
-const handleGoogle= ()=>{
-    signInWithGoogle()
-    .then((result)=>{
-        console.log(result)
-        navigate(from, { replace: true })
-    })
-    .catch(error=>{
-        console.log(error)
-    })
-
-}
+    }
 
 
     return (
         <div className="hero min-h-screen ">
+            <Helmet>
+                <title> ToysMurt | Sign up</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <div className=" w-1/2 ">
                     <img className='w-full' src="https://img.freepik.com/free-vector/sign-concept-illustration_114360-125.jpg?w=2000" alt="" />
