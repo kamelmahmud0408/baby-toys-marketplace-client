@@ -82,7 +82,7 @@ const MyToysRow = ({ mytoy, myToys, setMyToys }) => {
             </td>
             <td>
                 {description.slice(0, 20)} <span
-                    className='text-orange-500'>see more...</span>
+                    >...</span>
             </td>
             <th>
                 <Link to={`/updatetoy/${_id}`}><button className="btn btn-error btn-xs">update</button></Link>

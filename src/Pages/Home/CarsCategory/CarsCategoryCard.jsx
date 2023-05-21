@@ -16,7 +16,7 @@ const CarsCategoryCard = ({ toy }) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: '!Please Login fast',
+                text: '!You have to log in first to view details',
                 footer: '<a href="">Why do I have this issue?</a>'
               })
         }
