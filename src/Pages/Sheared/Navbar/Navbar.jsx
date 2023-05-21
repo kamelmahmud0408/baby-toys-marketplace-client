@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 
 const Navbar = () => {
@@ -16,17 +16,17 @@ const Navbar = () => {
 
     const navBarItems = <>
 
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/alltoys'>All Toys</Link></li>
-        <li><Link to='/blogs'>Blogs</Link></li>
+        <li><NavLink className={({ isActive }) => (isActive ? 'text-orange-500 font-semibold' : 'text-black font-semibold')} to='/'>Home</NavLink></li>
+        <li><NavLink className={({ isActive }) => (isActive ? 'text-orange-500 font-semibold' : 'text-black font-semibold')} to='/alltoys'>All Toys</NavLink></li>
+        <li><NavLink className={({ isActive }) => (isActive ? 'text-orange-500 font-semibold' : 'text-black font-semibold')} to='/blogs'>Blogs</NavLink></li>
 
         {
             user ? <div>{
                 user && <span className='text-white flex flex-col lg:flex-row lg:items-center gap-4'>
-                    <li><Link className='text-orange-500' to='/addtoy'>Add Toy</Link></li>
-                    <li><Link className='text-orange-500' to='/mytoys'>My Toys</Link></li>
-                    <li > <div ><img className='w-10 h-10 rounded-full tooltip ' src={user.photoURL} alt="" /></div></li> <li className='text-orange-500'><Link onClick={handleLogOut} to='/login'>LogOut</Link></li> </span>
-            }</div> : <li><Link to='/login'>Login</Link></li>
+                    <li><NavLink  className={({ isActive }) => (isActive ? 'text-orange-500 font-semibold' : 'text-black font-semibold')} to='/addtoy'>Add Toy</NavLink></li>
+                    <li><NavLink className={({ isActive }) => (isActive ? 'text-orange-500 font-semibold' : 'text-black font-semibold')} to='/mytoys'>My Toys</NavLink></li>
+                    <li > <div className='tooltip text-start' data-tip={user.displayName}  ><img className='w-10 h-10 rounded-full tooltip' src={user.photoURL} alt="" /></div></li> <li className={({ isActive }) => (isActive ? 'text-orange-500 font-semibold' : 'text-black font-semibold')}><NavLink className={({ isActive }) => (isActive ? 'text-orange-500 font-semibold' : 'text-black font-semibold')}  onClick={handleLogOut} to='/login'>LogOut</NavLink></li> </span>
+            }</div> : <li><NavLink to='/login'>Login</NavLink></li>
         }
 
     </>

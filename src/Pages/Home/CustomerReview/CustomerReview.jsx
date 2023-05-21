@@ -4,7 +4,7 @@ import '@smastrom/react-rating/style.css'
 
 const CustomerReview = () => {
     return (
-        <div className='mt-10'>
+        <div className='my-20'>
             <div className='text-center'>
                 <h1 className='text-5xl font-bold text-orange-500 '>What They Say</h1>
                 <h3 className='text-xl font-semibold mt-2'>Customer Testimonials</h3>

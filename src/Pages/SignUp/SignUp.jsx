@@ -69,7 +69,6 @@ const SignUp = () => {
 
     }
 
-
     return (
         <div className="hero min-h-screen ">
             <Helmet>
@@ -99,7 +98,7 @@ const SignUp = () => {
                             <input className='border w-full p-3 rounded  mt-4' type="password" name="password" id="" placeholder='Your Password' required />
                         </div>
                         <input className='mt-7 border btn btn-block  text-white bg-orange-500' type="submit" value="Login" />
-                        <p className='text-red-600 mt-4'></p>
+                        <p className='text-red-600 mt-4'>{error}</p>
                     </form>
                     <div className="divider">OR</div>
                     <div>

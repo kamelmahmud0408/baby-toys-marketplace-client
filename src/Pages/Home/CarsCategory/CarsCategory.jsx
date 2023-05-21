@@ -21,7 +21,7 @@ const CarsCategory = () => {
     }
     return (
         <div>
-            <div className='text-center my-10'>
+            <div className='text-center my-20'>
                 <h1 className='text-4xl text-orange-500 font-bold'>Shop By Category </h1>
                 <p className='mt-3'>Here are our products sorted by sub-category, have a nice shopping day</p>
             </div>

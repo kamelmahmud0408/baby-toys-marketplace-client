@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 const AllToys = () => {
     const [searchText, setSearchText] = useState('')
     const [toys, setToys] = useState([])
+    const {user}=useContext(AuthContext)
 
     useEffect(() => {
         fetch('https://baby-toys-marketplace-server.vercel.app/toys')
@@ -23,9 +26,21 @@ const AllToys = () => {
             })
     }
 
+    const handleAlert=()=>{
+        if(!user){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '!Please Login fast',
+                footer: '<a href="">Why do I have this issue?</a>'
+              })
+        }
+        
+    }
 
     return (
         <div>
+            <h1 className='text-4xl text-center my-5 text-orange-500 font-bold'>All Toys</h1>
             <Helmet>
                 <title> ToysMurt | All Toys</title>
             </Helmet>
@@ -56,7 +71,7 @@ const AllToys = () => {
                                 <td>{toy.price}</td>
                                 <td>{toy.quantity}</td>
                                 <td>{toy.category}</td>
-                                <td><Link to={`/toysdetails/${toy._id}`}><button className='btn btn-error'>veiw Details</button></Link></td>
+                                <td><Link to={`/toysdetails/${toy._id}`}><button onClick={handleAlert} className='btn btn-error'>veiw Details</button></Link></td>
                             </tr>)
                         }
                         {/* row 1 */}

@@ -2,7 +2,7 @@ import React from 'react';
 
 const PhotoGallery = () => {
     return (
-        <div className='my-16'>
+        <div className='my-20'>
             <div className='text-center mt-8'>
             <h1 className='text-5xl font-bold text-orange-500 mb-3'>Gallery</h1>
             <p className='mt-3 mb-10'>Below are some of our interesting product pictures, hope you like it, enjoy shopping!</p>

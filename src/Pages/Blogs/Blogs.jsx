@@ -7,6 +7,7 @@ const Blogs = () => {
     return (
         
             <div>
+                <h1 className=' my-4 text-4xl text-orange-500 text-center  pt-10 font-bold'>Answer the Questions Mentioned in the Assignment</h1>
                 <Helmet>
                     <title> ToysMurt | Blogs</title>
                 </Helmet>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Helmet } from 'react-helmet-async';
@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const { signIn, signInWithGoogle } = useContext(AuthContext)
-
+    const [error,setError]=useState('')
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -27,6 +27,7 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error)
+                setError(error.message)
             })
 
     }
@@ -63,7 +64,7 @@ const Login = () => {
                             <input className='border w-full p-3 rounded  mt-4' type="password" name="password" id="" placeholder='Your Password' required />
                         </div>
                         <input className='mt-7 border btn btn-block  text-white bg-orange-500' type="submit" value="Login" />
-                        <p className='text-red-600 mt-4'></p>
+                        <p className='text-red-600 mt-4'>{error}</p>
                     </form>
                     <div className="divider">OR</div>
                     <div>

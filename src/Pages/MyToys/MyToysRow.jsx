@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const MyToysRow = ({ mytoy,myToys,setMyToys }) => {
-    const { _id, toyName, image, sellerName, email, price, quantity, rating, description ,category} = mytoy;
+const MyToysRow = ({ mytoy, myToys, setMyToys }) => {
+    const { _id, toyName, image, sellerName, email, price, quantity, rating, description, category } = mytoy;
 
 
     const handleDelete = (_id) => {
@@ -19,8 +19,8 @@ const MyToysRow = ({ mytoy,myToys,setMyToys }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`https://baby-toys-marketplace-server.vercel.app/toys/${_id}`,{
-                    method:'DELETE'
+                fetch(`https://baby-toys-marketplace-server.vercel.app/toys/${_id}`, {
+                    method: 'DELETE'
                 })
                     .then(res => res.json())
                     .then(data => {
@@ -31,7 +31,7 @@ const MyToysRow = ({ mytoy,myToys,setMyToys }) => {
                                 'Your toy has been deleted.',
                                 'success'
                             )
-                            const remainingToys=myToys.filter(toys=> toys._id !== _id)
+                            const remainingToys = myToys.filter(toys => toys._id !== _id)
                             setMyToys(remainingToys)
                         }
                     })
@@ -81,7 +81,8 @@ const MyToysRow = ({ mytoy,myToys,setMyToys }) => {
                 {category}
             </td>
             <td>
-                {description.slice(0,5)}
+                {description.slice(0, 20)} <span
+                    className='text-orange-500'>see more...</span>
             </td>
             <th>
                 <Link to={`/updatetoy/${_id}`}><button className="btn btn-error btn-xs">update</button></Link>

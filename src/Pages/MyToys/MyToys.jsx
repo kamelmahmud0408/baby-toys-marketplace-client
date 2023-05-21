@@ -22,7 +22,7 @@ const MyToys = () => {
 
     const handleSort = (event) => {
         const sort = event.target.value;
-        fetch(`https://baby-toys-marketplace-server.vercel.app/sortByPrice?sort=${sort}`)
+        fetch(`https://baby-toys-marketplace-server.vercel.app/sortByPrice?user=${user.email}&&sort=${sort}`)
             .then(res => res.json()
                 .then(data => {
                     setMyToys(data)
@@ -32,13 +32,15 @@ const MyToys = () => {
 
     return (
         <div>
+            <h1 className='text-4xl text-center my-5 text-orange-500 font-bold'>My Toys</h1>
             <Helmet>
                 <title> ToysMurt | My Toys</title>
             </Helmet>
-            <div className='text-center'>
+            <div className='text-center text-xl font-semibold'>
+                <span className='me-3 text-orange-500'>Sort By</span>
                 <select onChange={handleSort} name="sort" >
-                    <option value="1">Assending</option>
-                    <option value="-1">Desending</option>
+                    <option value="1">Low to High Price</option>
+                    <option value="-1">High to Low Price</option>
                 </select>
             </div>
             <div className="overflow-x-auto w-full mt-10">
