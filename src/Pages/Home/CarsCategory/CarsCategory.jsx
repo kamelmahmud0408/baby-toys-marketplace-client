@@ -20,39 +20,45 @@ const CarsCategory = () => {
         setActiveTab(categoryName)
     }
     return (
-        <div className='text-center text-xl font-bold'>
-            <Tabs>
-                <TabList>
-                    <Tab onClick={() => handleClick('RegularCar')}>Regular car</Tab>
-                    <Tab onClick={() => handleClick('PuliceCar')}>Pulice Car</Tab>
-                    <Tab onClick={() => handleClick('Truck')}>Truck</Tab>
-                </TabList>
+        <div>
+            <div className='text-center my-10'>
+                <h1 className='text-4xl text-orange-500 font-bold'>Shop By Category </h1>
+                <p className='mt-3'>Here are our products sorted by sub-category, have a nice shopping day</p>
+            </div>
+            <div className='text-center text-xl font-bold'>
+                <Tabs>
+                    <TabList>
+                        <Tab onClick={() => handleClick('RegularCar')}>Regular car</Tab>
+                        <Tab onClick={() => handleClick('PuliceCar')}>Pulice Car</Tab>
+                        <Tab onClick={() => handleClick('Truck')}>Truck</Tab>
+                    </TabList>
 
-                <TabPanel>
-                    <h2>Any content 1</h2>
-                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
-                        {
-                            toys.map(toy => <CarsCategoryCard key={toy._id} toy={toy}></CarsCategoryCard>)
-                        }
-                    </div>
-                </TabPanel>
-                <TabPanel>
-                    <h2>Any content 2</h2>
-                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
-                        {
-                            toys.map(toy => <CarsCategoryCard key={toy._id} toy={toy}></CarsCategoryCard>)
-                        }
-                    </div>
-                </TabPanel>
-                <TabPanel>
-                    <h2>Any content 3</h2>
-                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
-                        {
-                            toys.map(toy => <CarsCategoryCard key={toy._id} toy={toy}></CarsCategoryCard>)
-                        }
-                    </div>
-                </TabPanel>
-            </Tabs>
+                    <TabPanel>
+                        <h2 className='my-8 text-xl font-bold'>Regular Car</h2>
+                        <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
+                            {
+                                toys.map(toy => <CarsCategoryCard key={toy._id} toy={toy}></CarsCategoryCard>)
+                            }
+                        </div>
+                    </TabPanel>
+                    <TabPanel>
+                        <h2 className='my-8 text-xl font-bold'>Pulice Car</h2>
+                        <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
+                            {
+                                toys.map(toy => <CarsCategoryCard key={toy._id} toy={toy}></CarsCategoryCard>)
+                            }
+                        </div>
+                    </TabPanel>
+                    <TabPanel>
+                        <h2 className='my-8 text-xl font-bold'>Truck</h2>
+                        <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
+                            {
+                                toys.map(toy => <CarsCategoryCard key={toy._id} toy={toy}></CarsCategoryCard>)
+                            }
+                        </div>
+                    </TabPanel>
+                </Tabs>
+            </div>
         </div>
     );
 };

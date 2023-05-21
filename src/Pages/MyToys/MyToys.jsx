@@ -6,8 +6,8 @@ const MyToys = () => {
 
     const { user } = useContext(AuthContext)
     const [myToys, setMyToys] = useState([])
-    const [activeTab,seActiveTab]=useState('')
-
+    // const [activeTab,seActiveTab]=useState('')
+    
 
     useEffect(() => {
         const url = `https://baby-toys-marketplace-server.vercel.app/toys?email=${user?.email}`;
@@ -17,20 +17,29 @@ const MyToys = () => {
                 console.log(data)
                 setMyToys(data)
             })
-    }, [])
+    }, [user])
+
+    // useEffect(() => {
+    //     const url = `https://baby-toys-marketplace-server.vercel.app/sortingToys?sort=${asc ? 'asc' : 'desc'}`;
+    //     fetch(url)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             setMyToys(data)
+    //         })
+    // }, [asc])
 
 
-    const handleClick=(value)=>{
-        console.log(value)
-        seActiveTab(value)
-    }
+
 
     return (
         <div>
             <div className='text-center'>
-                <button onClick={()=>handleClick('price')}>assending</button>
-                <button onClick={()=>handleClick('price')}>desssending</button>
-                {console.log(activeTab)}
+                {/* <button
+                    className="btn btn-primary"
+                    onClick={() => setAsc(!asc)}
+                >{asc ? 'Price: High to Low' : 'Price: Low to High'}</button> */}
+                {/* {console.log(activeTab)} */}
             </div>
             <div className="overflow-x-auto w-full mt-10">
                 <table className="table w-full">
