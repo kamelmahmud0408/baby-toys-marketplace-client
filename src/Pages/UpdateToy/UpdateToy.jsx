@@ -56,7 +56,7 @@ const UpdateToy = () => {
 
         <div className='mt-10' >
             <Helmet>
-                <title> ToysMurt | Update toy</title>
+                <title> ToysMart | Update toy</title>
             </Helmet>
             <h1 className='text-center text-3xl text-orange-500 font-bold my-10'>Update Toy</h1>
             <form onSubmit={handleSubmit(onSubmit)}>

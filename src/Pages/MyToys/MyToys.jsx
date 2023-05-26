@@ -33,7 +33,7 @@ const MyToys = () => {
         <div>
             <h1 className='text-4xl text-center my-5 text-orange-500 font-bold'>My Toys</h1>
             <Helmet>
-                <title> ToysMurt | My Toys</title>
+                <title> ToysMart | My Toys</title>
             </Helmet>
             <div className='text-center text-xl font-semibold'>
                 <span className='me-3 text-orange-500'>Sort By</span>

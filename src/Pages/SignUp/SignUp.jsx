@@ -72,7 +72,7 @@ const SignUp = () => {
     return (
         <div className="hero min-h-screen ">
             <Helmet>
-                <title> ToysMurt | Sign up</title>
+                <title> ToysMart | Sign up</title>
             </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <div className=" w-1/2 ">

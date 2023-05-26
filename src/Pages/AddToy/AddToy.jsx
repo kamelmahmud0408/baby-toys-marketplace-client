@@ -50,7 +50,7 @@ const AddToy = () => {
     return (
         <div className='mt-10' >
             <Helmet>
-                <title> ToysMurt | Add toy</title>
+                <title> ToysMart | Add toy</title>
             </Helmet>
             <h1 className='text-center text-3xl text-orange-500 font-bold my-10'>Add a Toy</h1>
             <form onSubmit={handleSubmit(onSubmit)}>

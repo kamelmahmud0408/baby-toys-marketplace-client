@@ -16,15 +16,23 @@ const Home = () => {
   return (
     <div data-aos="zoom-in">
       <Helmet>
-        <title> ToysMurt | Home</title>
+        <title> ToysMart | Home</title>
       </Helmet>
       <Banner></Banner>
-      <PhotoGallery></PhotoGallery>
-      <CarsCategory></CarsCategory>
-     
+      <div data-aos="fade-down">
+        <PhotoGallery></PhotoGallery>
+      </div>
+      <div data-aos="fade-up-right">
+        <CarsCategory></CarsCategory>
+      </div>
+
+      <div data-aos="fade-up">
         <CustomerReview></CustomerReview>
-      
-      <AboutUs></AboutUs>
+      </div>
+
+      <div data-aos="fade-left">
+        <AboutUs></AboutUs>
+      </div>
     </div>
   );
 };

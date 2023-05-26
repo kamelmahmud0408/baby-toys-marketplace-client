@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className="footer p-10 bg-slate-100 text-base-content text-center items-center">
             <div className='bg-slate-100'>
                 <img  className='bg-slate-100 w-20' src="https://i.ibb.co/mXwW3FX/car-vector-object-transportation-illustration-260nw-1667537305-removebg-preview-1.png" alt="" />
-                <h1 className=" text-4xl font-bold  mb-3 ">Toys <span className='text-orange-500'>Murt</span></h1>
+                <h1 className=" text-4xl font-bold  mb-3 ">Toys <span className='text-orange-500'>Mart</span></h1>
 
                 <span className="footer-title">Social</span>
                 <div className="grid grid-flow-col gap-4">

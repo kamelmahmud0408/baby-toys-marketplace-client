@@ -13,7 +13,7 @@ const ToysDetails = () => {
     return (
         <div className="card w-full bg-base-100 shadow mt-10">
             <Helmet>
-                <title> ToysMurt | Toy details</title>
+                <title> ToysMart | Toy details</title>
             </Helmet>
             <figure><img src={image} alt="" /></figure>
             <div className="card-body">

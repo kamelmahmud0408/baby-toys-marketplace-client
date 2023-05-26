@@ -9,7 +9,7 @@ const Blogs = () => {
             <div>
                 <h1 className=' my-4 text-4xl text-orange-500 text-center  pt-10 font-bold'>Answer the Questions Mentioned in the Assignment</h1>
                 <Helmet>
-                    <title> ToysMurt | Blogs</title>
+                    <title> ToysMart | Blogs</title>
                 </Helmet>
                 <div className='mt-10 p-5'>
                     <h1 className='text-3xl font-bold text-orange-500'>Question No: 1</h1>
