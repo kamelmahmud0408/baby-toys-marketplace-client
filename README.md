@@ -9,4 +9,4 @@
 * User authentication 
 * Also some fun task like AOS, dynamic title etc.
 
-## [Food Station website link](https://baby-toys-marketlace.web.app/)
+## [Toys Mart website link](https://baby-toys-marketlace.web.app/)
